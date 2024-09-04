@@ -55,7 +55,7 @@ function MainSection() {
             >
               +
             </div>
-            Add More
+            Add More files 
           </div>
         </>
       )}
