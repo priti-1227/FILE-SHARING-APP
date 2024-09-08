@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* index.css */
+
+/* Customize the scrollbar for the custom-scrollbar class */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #6b7280; /* Gray color for the thumb */
+    border-radius: 10px; /* Rounded edges for thumb */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #4b5563; /* Darker on hover */
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #f3f4f6; /* Light background for the track */
+    border-radius: 10px;
+  }
+  
