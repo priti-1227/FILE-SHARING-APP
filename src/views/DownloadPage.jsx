@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';  // Get URL parameters
-import axios from 'axios';  // To make HTTP requests
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const DownloadPage = () => {
-  const { uuid } = useParams();  // Extract file ID from the URL
+  const { uuid } = useParams();
   const [fileName, setFileName] = useState('');
   const [fileLink, setFileLink] = useState('');
   const [loading, setLoading] = useState(true);
@@ -11,25 +11,27 @@ const DownloadPage = () => {
 
   useEffect(() => {
     const fetchFile = async () => {
-        try {
-            const response = await axios.get(`/files/${uuid}`);
-            setFileName(response.data);
-        } catch (err) {
-            setError(err.response?.data?.error || 'Something went wrong.');
-        }
+      try {
+        const response = await axios.get(`/files/download/${uuid}`);
+        setFileName(response.data.filename); // Adjust according to your response structure
+        setFileLink(response.data.download); // Adjust according to your response structure
+        setLoading(false);
+      } catch (err) {
+        setError(err.response?.data?.error || 'Something went wrong.');
+        setLoading(false);
+      }
     };
 
     fetchFile();
-}, [uuid]);
+  }, [uuid]);
 
-if (error) {
-    return <div>{error}</div>;
-}
-
-if (!fileName) {
+  if (loading) {
     return <div>Loading...</div>;
-}
+  }
 
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
@@ -43,9 +45,9 @@ if (!fileName) {
         <p className="text-gray-500 mb-4">Link expires in 24 hours</p>
         <p className="text-gray-700 mb-4">{fileName}</p>
         <a
-          href={fileLink}  // The download link fetched from the backend
+          href={fileLink}
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-          download  // Ensure the file downloads
+          download
         >
           Download File
         </a>
