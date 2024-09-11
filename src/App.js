@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./component/Main";  // Your existing main component
-import DownloadPage from "./views/DownloadPage";
+import Download from "./views/Download";
 // import DownloadPage from "./component/DownloadPage";  // Your new download page
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/files/download/:uuid" element={<DownloadPage />} />
+        <Route path="/files/download/:uuid" element={<Download />} />
       </Routes>
     </Router>
   );
