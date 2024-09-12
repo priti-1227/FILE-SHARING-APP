@@ -44,7 +44,7 @@ router.post('/', (req , res) => {
 
     //Response -> Link
     const response =  await file.save();
-    return res.json({file: `${process.env.APP_BASED_URL}/files/${response.uuid}`});
+    return res.json({file: `${process.env.APP_BASED_URL}/files/${response.uuid}`} , );
    // "http://localhost:3000/files/c4eba3a9-9076-4a30-a91a-a12f855cb2fa"
 })
 })
