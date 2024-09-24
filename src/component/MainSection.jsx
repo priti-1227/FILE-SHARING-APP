@@ -28,7 +28,7 @@ function MainSection() {
   };
   return (
     <div className="h-screen flex items-center">
-      <div className="mx-4 bg-white shadow-lg rounded-lg px-4 pt-4 w-72 relative overflow-auto h-96 custom-scrollbar">
+      <div className="mx-10 bg-white shadow-lg rounded-lg px-4 pt-4 w-80 relative overflow-auto h-96 custom-scrollbar">
        
       <div className="overflow-y-auto">
         {files.map((file, index) => (

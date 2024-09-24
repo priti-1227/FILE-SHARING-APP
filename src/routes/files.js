@@ -22,7 +22,7 @@ let upload = multer({
 router.post('/', (req , res) => {
    
 
-    //store file
+    //store file in db
     upload(req, res, async(err) => {
          //validate request
     if(!req.file){
@@ -31,15 +31,15 @@ router.post('/', (req , res) => {
         if(err) {
             return res.status(500).send({error: err.message})
         }
-   
-
+  
+        console.log(req.file.path)
     //Store into Database
     const file = new File({
         filename: req.file.filename,
         uuid: uuid4(),
         path: req.file.path,
         size: req.file.size
-
+        
     });
 
     //Response -> Link

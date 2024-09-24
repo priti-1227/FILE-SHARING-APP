@@ -15,6 +15,7 @@ app.use(cors({
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static('public'))
 
 const PORT = process.env.PORT || 5500;
 const connectDB = require('./config/db');
@@ -28,6 +29,8 @@ app.set('views', path.join(__dirname, '/views'));
 app.use('/api/files', require('./routes/files'));
 app.use('/files', require('./routes/show'));
 app.use('/files/download', require('./routes/download'));
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
 
 
 app.listen(PORT , ()=>{

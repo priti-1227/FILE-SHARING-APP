@@ -14,12 +14,12 @@ const Download = () => {
   useEffect(() => {
     const fetchFile = async () => {
       try {
-        const response = await axios.get(`http://localhost:5500/files/download/${uuid}`);
+        const response = await axios.get(`http://localhost:5500/files/${uuid}`);
         console.log('GET response:', response.data);
 
-        setFileName(response.data.fileName); // Adjust according to your response structure
+        setFileName(response.data.fileName);
         setFileLink(`${process.env.SERVER_URL}/files/download/${uuid}`);
-        // Adjust according to your response structure
+        
         console.log('Set file name:', response.data.fileName);
       console.log('Set file link:', response.data.download);
         setLoading(false);
